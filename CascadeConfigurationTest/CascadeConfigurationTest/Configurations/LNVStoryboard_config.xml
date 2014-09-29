@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Document>
+  <StoryboardConfigs>
+    <StoryboardConfig Name="LNVStoryboard" Operand="loadandvalidate" ProducerThreadCount="2" ConsumerThreadCount="8">
+      <ActionConfigs>
+        <ActionConfig Name="FetchCommonPropertiesAction">
+          <DataAccessConfig Name="IFetchSPTimetoutValueDataAccess"
+                            ClassName="FetchSPTimetoutValueDataAccess"
+                            MockClassName="FetchSPTimetoutValueMockDataAccess" />
+          <DataAccessConfig Name="IGetUSCListDataAccess"
+                            ClassName="GetUSCListDataAccess"
+                            MockClassName="GetUSCListMockDataAccess" />
+        </ActionConfig>
+        <ActionConfig Name="PageReadFixedThreadCountOrganizerAction" PerThreadThresholdCount="1000">
+
+        </ActionConfig>
+        <ActionConfig Name="BufferReadFixedThreadCountOrganizerAction" MaxPageSize2="1000"></ActionConfig>
+        <ActionConfig Name="LNVDatabaseReadSchemaAction">
+          <DataAccessConfig Name="IDataBufferReadSchemaDataAccess"
+                            ClassName="LNVDataBufferReadSchemaDataAccess"
+                            MockClassName="JobLevelDataPageReadSchemaMockDataAccess" />
+        </ActionConfig>
+
+        <ActionConfig Name="LNVDatabaseBufferReadAction">
+          <DataAccessConfig Name="IDataBufferReadDataAccess"
+                            ClassName="LNVDataBufferReadDataAccess"
+                            MockClassName="JobLevelDataPageReadMockDataAccess" />
+        </ActionConfig>
+
+        <ActionConfig Name="LNVGetPrerequisiteInfoAction">
+          <DataAccessConfig Name="IStoredProcDataAccess"
+                            ClassName="StoredProcDataAccess"
+                            MockClassName="StoredProcMockDataAccess" />
+        </ActionConfig>
+
+        <ActionConfig Name="LNVCreateStagingTableAction">
+          <DataAccessConfig Name="IStoredProcDataAccess"
+                            ClassName="StoredProcDataAccess"
+                            MockClassName="StoredProcMockDataAccess" />
+        </ActionConfig>
+
+        <ActionConfig Name="LNVTransformationAction" DebugSwitch="false" DebugWatchAtRowId="3,4" DebugWatchValueName="Gender">
+        </ActionConfig>
+
+        <ActionConfig Name="LNVFileDataDestMemoryWriteAction">
+          <DataAccessConfig Name="IDestWriter"
+                            ClassName="SqlBulkInsertDestWriter"
+                            MockClassName="SqlBulkInsertDestWriterMockDataAccess" />
+          <DataAccessConfig Name="IGetTableSchemaDataAccess"
+                            ClassName="GetTableSchemaDataAccess"
+                            MockClassName="GetTableSchemaMockDataAccess" />
+        </ActionConfig>
+        <ActionConfig Name="LNVValResultDestMemoryWriteAction">
+          <DataAccessConfig Name="IDestWriter"
+                            ClassName="SqlBulkInsertDestWriter"
+                            MockClassName="SqlBulkInsertDestWriterMockDataAccess" />
+          <DataAccessConfig Name="IGetTableSchemaDataAccess"
+                            ClassName="GetTableSchemaDataAccess"
+                            MockClassName="GetTableSchemaMockDataAccess" />
+        </ActionConfig>
+        <ActionConfig Name="BulkInsertAction">
+          <DataAccessConfig Name="IDestWriter"
+                            ClassName="SqlBulkInsertDestWriter"
+                            MockClassName="SqlBulkInsertDestWriterMockDataAccess" />
+        </ActionConfig>
+        <ActionConfig Name="LNVWarehouseValSumAction">
+          <DataAccessConfig Name="IStoredProcDataAccess"
+                            ClassName="StoredProcDataAccess"
+                            MockClassName="StoredProcMockDataAccess" />
+        </ActionConfig>
+        <ActionConfig Name="LNVRemoveAllNullAction">
+          <DataAccessConfig Name="IStoredProcDataAccess"
+                            ClassName="StoredProcDataAccess"
+                            MockClassName="StoredProcMockDataAccess" />
+        </ActionConfig>
+      </ActionConfigs>
+    </StoryboardConfig>
+  </StoryboardConfigs>
+</Document>
